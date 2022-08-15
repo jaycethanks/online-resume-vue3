@@ -6,7 +6,7 @@ import 'md-editor-v3/lib/style.css';
 const text = ref('');
 axios({
   method: 'get',
-  url: 'http://localhost:4000/get',
+  url: '/api/get',
 }).then((res) => {
   text.value = res.data.content;
 });
@@ -77,7 +77,7 @@ axios({
     </nav>
   </div>
   <main
-    class="bg-white container mx-auto p-5 lg:p-20 lg:w-3/5 h-full shadow-xl"
+    class="bg-white container mx-auto p-5 lg:p-20 lg:w-3/5 h-full mb-48 shadow-xl"
   >
     <md-editor id="printMe" v-model="text" preview-only />
   </main>

@@ -20,6 +20,8 @@
 import { ref, inject, toRaw } from 'vue';
 import { notify } from 'notiwind';
 import axios from 'axios';
+import MdEditor from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
 let text = ref('');
 let hidden = ref(true);
 let passwd = ref('');
@@ -36,20 +38,18 @@ const handleEnter = () => {
     );
   }
 };
-import MdEditor from 'md-editor-v3';
-import 'md-editor-v3/lib/style.css';
 
 axios({
   method: 'get',
-  url: 'http://localhost:4000/get',
+  url: '/api/get',
 }).then((res) => {
   text.value = res.data.content;
 });
 
-const handleSave = (param) => {
+const handleSave = () => {
   axios({
     method: 'post',
-    url: 'http://localhost:4000/save',
+    url: '/api/save',
     data: {
       context: text.value,
     },
